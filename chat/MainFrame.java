@@ -39,15 +39,18 @@ public class MainFrame extends JFrame{
 	JTextField chatfield = new JTextField(30);
 	JTextArea chatarea = new JTextArea(8, 30);
 	
-	// setup_panel components
+	// center_panel components
 	String[] choices = { "WALL","ARCHER TOWER", "WIZARD TOWER","CANNON","MORTAR"};
+	JLabel choose = new JLabel("Assign a type to each tower.");
 	JLabel setup_label;
 	JComboBox<String> cb;
+	
 	
 	CardLayout cardLayout = (CardLayout) cards.getLayout();
 	String address="", username="";
 	
 	public MainFrame(){
+		
 		start_panel.setLayout(null);
 		
 		start_panel.setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
@@ -67,13 +70,70 @@ public class MainFrame extends JFrame{
 		chat_panel.add(chatarea, BorderLayout.CENTER);
 		
 		center_panel.setLayout(null);
+		choose.setBounds(20,40, 200, 20);
+		center_panel.add(choose);
 		
-		for(int i=0; i<9; i++){
+		for(int i=0, j=20; i<9; i++,j=j+20){
 			setup_label = new JLabel("Tower "+i);
 			cb = new JComboBox<String>(choices);
-			setup_panel.add(setup_label);
-			setup_panel.add(cb);
+			setup_label.setBounds(20,50+j, 100, 20);
+			cb.setBounds(70,50+j, 100, 20);
+			center_panel.add(setup_label);
+			center_panel.add(cb);
 		}
+		
+		JLabel form_label = new JLabel("The setup below is the formation of the towers.");
+		form_label.setBounds(270,40, 350, 20);
+		center_panel.add(form_label);
+		
+		JButton btn1 = new JButton("Tower 1");
+		btn1.setBounds(250,100, 100, 100);
+		//btn1.setEnabled(false);
+		center_panel.add(btn1);
+		
+		JButton btn2 = new JButton("Tower 2");
+		btn2.setBounds(250,200, 100, 100);
+		//btn2.setEnabled(false);
+		center_panel.add(btn2);
+		
+		JButton btn3 = new JButton("Tower 3");
+		btn3.setBounds(250,300, 100, 100);
+		//btn3.setEnabled(false);
+		center_panel.add(btn3);
+		
+		JButton btn4 = new JButton("Tower 4");
+		btn4.setBounds(350,100, 100, 100);
+		//btn4.setEnabled(false);
+		center_panel.add(btn4);
+		
+		JButton btn5 = new JButton("Tower 5");
+		btn5.setBounds(350,200, 100, 100);
+		//btn5.setEnabled(false);
+		center_panel.add(btn5);
+		
+		JButton btn6 = new JButton("Tower 6");
+		btn6.setBounds(350,300, 100, 100);
+		//btn6.setEnabled(false);
+		center_panel.add(btn6);
+		
+		JButton btn7 = new JButton("Tower 7");
+		btn7.setBounds(450,100, 100, 100);
+		//btn7.setEnabled(false);
+		center_panel.add(btn7);
+		
+		JButton btn8 = new JButton("Tower 8");
+		btn8.setBounds(450,200, 100, 100);
+		//btn8.setEnabled(false);
+		center_panel.add(btn8);
+		
+		JButton btn9 = new JButton("Tower 9");
+		btn9.setBounds(450,300, 100, 100);
+		//btn9.setEnabled(false);
+		center_panel.add(btn9);
+
+		JButton start_button = new JButton("START");
+		start_button.setBounds(0,600, 100, 100);
+		center_panel.add(start_button);
 		
 	   //textField.setEditable(false);
        //messageArea.setEditable(false);
@@ -111,8 +171,6 @@ public class MainFrame extends JFrame{
 			
 		});
 		
-		
-		
 		start_panel.add(ip_label);
 		start_panel.add(ip_field);
 		start_panel.add(uname_label);
@@ -121,7 +179,7 @@ public class MainFrame extends JFrame{
 		start_panel.add(exit_button);
 		
 		lobby_panel.add(chat_panel, BorderLayout.NORTH);
-		lobby_panel.add(setup_panel, BorderLayout.CENTER);
+		lobby_panel.add(center_panel, BorderLayout.CENTER);
 		
 		cards.add(start_panel, "home");
 		cards.add(lobby_panel, "lobby");
