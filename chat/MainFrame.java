@@ -32,8 +32,8 @@ public class MainFrame extends JFrame{
 	
 	// lobby_panel components
 	JPanel chat_panel = new JPanel(new BorderLayout());
-	JPanel setup_panel = new JPanel(new GridLayout(9,1));
 	JPanel center_panel = new JPanel();
+	JPanel game_panel = new JPanel();
 	
 	// chat_panel components
 	JTextField chatfield = new JTextField(30);
@@ -42,8 +42,25 @@ public class MainFrame extends JFrame{
 	// center_panel components
 	String[] choices = { "WALL","ARCHER TOWER", "WIZARD TOWER","CANNON","MORTAR"};
 	JLabel choose = new JLabel("Assign a type to each tower.");
-	JLabel setup_label;
-	JComboBox<String> cb;
+	JLabel setup_label1;
+	JLabel setup_label2;
+	JLabel setup_label3;
+	JLabel setup_label4;
+	JLabel setup_label5;
+	JLabel setup_label6;
+	JLabel setup_label7;
+	JLabel setup_label8;
+	JLabel setup_label9;
+	JComboBox<String> cb1;
+	JComboBox<String> cb2;
+	JComboBox<String> cb3;
+	JComboBox<String> cb4;
+	JComboBox<String> cb5;
+	JComboBox<String> cb6;
+	JComboBox<String> cb7;
+	JComboBox<String> cb8;
+	JComboBox<String> cb9;
+	
 	
 	
 	CardLayout cardLayout = (CardLayout) cards.getLayout();
@@ -52,6 +69,8 @@ public class MainFrame extends JFrame{
 	public MainFrame(){
 		
 		start_panel.setLayout(null);
+		center_panel.setLayout(null);
+		game_panel.setLayout(null);
 		
 		start_panel.setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
 		ip_field.setEditable(true);
@@ -69,18 +88,74 @@ public class MainFrame extends JFrame{
 		chat_panel.add(chatfield, BorderLayout.NORTH);
 		chat_panel.add(chatarea, BorderLayout.CENTER);
 		
-		center_panel.setLayout(null);
+		
 		choose.setBounds(20,40, 200, 20);
 		center_panel.add(choose);
 		
-		for(int i=0, j=20; i<9; i++,j=j+20){
-			setup_label = new JLabel("Tower "+i);
-			cb = new JComboBox<String>(choices);
-			setup_label.setBounds(20,50+j, 100, 20);
-			cb.setBounds(70,50+j, 100, 20);
-			center_panel.add(setup_label);
-			center_panel.add(cb);
-		}
+		
+		setup_label1 = new JLabel("Tower 1");
+		cb1 = new JComboBox<String>(choices);
+		setup_label1.setBounds(20,50+20, 100, 20);
+		cb1.setBounds(70,50+20, 100, 20);
+		center_panel.add(setup_label1);
+		center_panel.add(cb1);
+		
+		setup_label2 = new JLabel("Tower 2");
+		cb2 = new JComboBox<String>(choices);
+		setup_label2.setBounds(20,70+20, 100, 20);
+		cb2.setBounds(70,70+20, 100, 20);
+		center_panel.add(setup_label2);
+		center_panel.add(cb2);
+		
+		setup_label3 = new JLabel("Tower 3");
+		cb3 = new JComboBox<String>(choices);
+		setup_label3.setBounds(20,90+20, 100, 20);
+		cb3.setBounds(70,90+20, 100, 20);
+		center_panel.add(setup_label3);
+		center_panel.add(cb3);
+		
+		setup_label4 = new JLabel("Tower 4");
+		cb4 = new JComboBox<String>(choices);
+		setup_label4.setBounds(20,110+20, 100, 20);
+		cb4.setBounds(70,110+20, 100, 20);
+		center_panel.add(setup_label4);
+		center_panel.add(cb4);
+		
+		setup_label5 = new JLabel("Tower 5");
+		cb5 = new JComboBox<String>(choices);
+		setup_label5.setBounds(20,130+20, 100, 20);
+		cb5.setBounds(70,130+20, 100, 20);
+		center_panel.add(setup_label5);
+		center_panel.add(cb5);
+		
+		setup_label6 = new JLabel("Tower 6");
+		cb6 = new JComboBox<String>(choices);
+		setup_label6.setBounds(20,150+20, 100, 20);
+		cb6.setBounds(70,150+20, 100, 20);
+		center_panel.add(setup_label6);
+		center_panel.add(cb6);
+		
+		setup_label7 = new JLabel("Tower 7");
+		cb7 = new JComboBox<String>(choices);
+		setup_label7.setBounds(20,170+20, 100, 20);
+		cb7.setBounds(70,170+20, 100, 20);
+		center_panel.add(setup_label7);
+		center_panel.add(cb7);
+		
+		setup_label8 = new JLabel("Tower 8");
+		cb8 = new JComboBox<String>(choices);
+		setup_label8.setBounds(20,190+20, 100, 20);
+		cb8.setBounds(70,190+20, 100, 20);
+		center_panel.add(setup_label8);
+		center_panel.add(cb8);
+		
+		setup_label9 = new JLabel("Tower 9");
+		cb9 = new JComboBox<String>(choices);
+		setup_label9.setBounds(20,210+20, 100, 20);
+		cb9.setBounds(70,210+20, 100, 20);
+		center_panel.add(setup_label9);
+		center_panel.add(cb9);
+		
 		
 		JLabel form_label = new JLabel("The setup below is the formation of the towers.");
 		form_label.setBounds(270,40, 350, 20);
@@ -171,6 +246,204 @@ public class MainFrame extends JFrame{
 			
 		});
 		
+		cb1.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent ae){
+				JComboBox comboBox = (JComboBox) ae.getSource();
+				
+				Object selected = comboBox.getSelectedItem();
+				if(selected.toString().equals("WALL")){ 
+					btn1.setText("WALL");
+				}else if(selected.toString().equals("ARCHER TOWER")){
+					btn1.setText("A-TOWER");
+				}else if(selected.toString().equals("WIZARD TOWER")){
+					btn1.setText("WIZTOWER");
+				}else if(selected.toString().equals("CANNON")){
+					btn1.setText("CANNON");
+				}else if(selected.toString().equals("MORTAR")){
+					btn1.setText("MORTAR");
+				}
+			}
+			
+		});
+		
+		cb2.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent ae){
+				JComboBox comboBox = (JComboBox) ae.getSource();
+				
+				Object selected = comboBox.getSelectedItem();
+				if(selected.toString().equals("WALL")){ 
+					btn2.setText("WALL");
+				}else if(selected.toString().equals("ARCHER TOWER")){
+					btn2.setText("A-TOWER");
+				}else if(selected.toString().equals("WIZARD TOWER")){
+					btn2.setText("WIZTOWER");
+				}else if(selected.toString().equals("CANNON")){
+					btn2.setText("CANNON");
+				}else if(selected.toString().equals("MORTAR")){
+					btn2.setText("MORTAR");
+				}
+			}
+			
+		});
+		
+		cb3.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent ae){
+				JComboBox comboBox = (JComboBox) ae.getSource();
+				
+				Object selected = comboBox.getSelectedItem();
+				if(selected.toString().equals("WALL")){ 
+					btn3.setText("WALL");
+				}else if(selected.toString().equals("ARCHER TOWER")){
+					btn3.setText("A-TOWER");
+				}else if(selected.toString().equals("WIZARD TOWER")){
+					btn3.setText("WIZTOWER");
+				}else if(selected.toString().equals("CANNON")){
+					btn3.setText("CANNON");
+				}else if(selected.toString().equals("MORTAR")){
+					btn3.setText("MORTAR");
+				}
+			}
+			
+		});
+		
+		cb4.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent ae){
+				JComboBox comboBox = (JComboBox) ae.getSource();
+				
+				Object selected = comboBox.getSelectedItem();
+				if(selected.toString().equals("WALL")){ 
+					btn4.setText("WALL");
+				}else if(selected.toString().equals("ARCHER TOWER")){
+					btn4.setText("A-TOWER");
+				}else if(selected.toString().equals("WIZARD TOWER")){
+					btn4.setText("WIZTOWER");
+				}else if(selected.toString().equals("CANNON")){
+					btn4.setText("CANNON");
+				}else if(selected.toString().equals("MORTAR")){
+					btn4.setText("MORTAR");
+				}
+			}
+			
+		});
+		
+		cb5.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent ae){
+				JComboBox comboBox = (JComboBox) ae.getSource();
+				
+				Object selected = comboBox.getSelectedItem();
+				if(selected.toString().equals("WALL")){ 
+					btn5.setText("WALL");
+				}else if(selected.toString().equals("ARCHER TOWER")){
+					btn5.setText("A-TOWER");
+				}else if(selected.toString().equals("WIZARD TOWER")){
+					btn5.setText("WIZTOWER");
+				}else if(selected.toString().equals("CANNON")){
+					btn5.setText("CANNON");
+				}else if(selected.toString().equals("MORTAR")){
+					btn5.setText("MORTAR");
+				}
+			}
+			
+		});
+		
+		cb6.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent ae){
+				JComboBox comboBox = (JComboBox) ae.getSource();
+				
+				Object selected = comboBox.getSelectedItem();
+				if(selected.toString().equals("WALL")){ 
+					btn6.setText("WALL");
+				}else if(selected.toString().equals("ARCHER TOWER")){
+					btn6.setText("A-TOWER");
+				}else if(selected.toString().equals("WIZARD TOWER")){
+					btn6.setText("WIZTOWER");
+				}else if(selected.toString().equals("CANNON")){
+					btn6.setText("CANNON");
+				}else if(selected.toString().equals("MORTAR")){
+					btn6.setText("MORTAR");
+				}
+			}
+			
+		});
+		
+		cb7.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent ae){
+				JComboBox comboBox = (JComboBox) ae.getSource();
+				
+				Object selected = comboBox.getSelectedItem();
+				if(selected.toString().equals("WALL")){ 
+					btn7.setText("WALL");
+				}else if(selected.toString().equals("ARCHER TOWER")){
+					btn7.setText("A-TOWER");
+				}else if(selected.toString().equals("WIZARD TOWER")){
+					btn7.setText("WIZTOWER");
+				}else if(selected.toString().equals("CANNON")){
+					btn7.setText("CANNON");
+				}else if(selected.toString().equals("MORTAR")){
+					btn7.setText("MORTAR");
+				}
+			}
+			
+		});
+		
+		cb8.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent ae){
+				JComboBox comboBox = (JComboBox) ae.getSource();
+				
+				Object selected = comboBox.getSelectedItem();
+				if(selected.toString().equals("WALL")){ 
+					btn8.setText("WALL");
+				}else if(selected.toString().equals("ARCHER TOWER")){
+					btn8.setText("A-TOWER");
+				}else if(selected.toString().equals("WIZARD TOWER")){
+					btn8.setText("WIZTOWER");
+				}else if(selected.toString().equals("CANNON")){
+					btn8.setText("CANNON");
+				}else if(selected.toString().equals("MORTAR")){
+					btn8.setText("MORTAR");
+				}
+			}
+			
+		});
+		
+		cb9.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent ae){
+				JComboBox comboBox = (JComboBox) ae.getSource();
+				
+				Object selected = comboBox.getSelectedItem();
+				if(selected.toString().equals("WALL")){ 
+					btn9.setText("WALL");
+				}else if(selected.toString().equals("ARCHER TOWER")){
+					btn9.setText("A-TOWER");
+				}else if(selected.toString().equals("WIZARD TOWER")){
+					btn9.setText("WIZTOWER");
+				}else if(selected.toString().equals("CANNON")){
+					btn9.setText("CANNON");
+				}else if(selected.toString().equals("MORTAR")){
+					btn9.setText("MORTAR");
+				}
+			}
+			
+		});
+		
+		start_button.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent ae){
+				CardLayout cl = (CardLayout) cards.getLayout();
+				cl.show(cards, "game");
+			}
+			
+		});
+		
 		start_panel.add(ip_label);
 		start_panel.add(ip_field);
 		start_panel.add(uname_label);
@@ -183,6 +456,7 @@ public class MainFrame extends JFrame{
 		
 		cards.add(start_panel, "home");
 		cards.add(lobby_panel, "lobby");
+		cards.add(game_panel, "game");
 		
 		frame.add(cards);
 	}
