@@ -132,7 +132,7 @@ public class MainFrame extends JFrame{
 		center_panel.add(btn9);
 
 		JButton start_button = new JButton("START");
-		start_button.setBounds(0,600, 100, 100);
+		start_button.setBounds(350, 430, 100, 30);
 		center_panel.add(start_button);
 		
 	   //textField.setEditable(false);
