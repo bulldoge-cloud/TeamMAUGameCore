@@ -18,9 +18,9 @@ import java.util.HashSet;
 */
 public class ChatServer {
 
-    /**
-     * The port that the server listens on.
-     */
+    /*
+     The port that the server listens on.
+    */
     private static final int PORT = 9001;
 
     /*
@@ -92,6 +92,7 @@ public class ChatServer {
                 while(true){
                     out.println("SUBMITNAME");
                     name = in.readLine();
+					System.out.println(name+" is trying to connect to the server.");
                     if(name == null){
                         return;
                     }

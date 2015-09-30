@@ -61,8 +61,7 @@ public class ChatClient {
              the contents of the text field to the server.    Then clear
              the text area in preparation for the next message.
             */
-            public void actionPerformed(ActionEvent e){
-                out.println(textField.getText());
+            public void actionPerformed(ActionEvent e){out.println(textField.getText());
                 textField.setText("");
             }
         });
@@ -90,8 +89,7 @@ public class ChatClient {
         // Make connection and initialize streams
         String serverAddress = getServerAddress();
         Socket socket = new Socket(serverAddress, 9001);
-        in = new BufferedReader(new InputStreamReader(
-            socket.getInputStream()));
+        in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
         out = new PrintWriter(socket.getOutputStream(), true);
 
         // Process all messages from server, according to the protocol.
