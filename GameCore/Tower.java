@@ -4,25 +4,22 @@ import javax.swing.ImageIcon;
 import java.awt.event.KeyEvent;
 import java.awt.Rectangle; 
 
-public class Unit extends Entity{
+public class Tower extends Entity{
 
 	private int startX;
 	int life = 1;
-	int val = 1;
 	
-	public Unit(int x, int y){
+	public Tower(int x, int y){
 	
 		super(x,y);
 		startX = x;
 	}
 	
-	public void update(int value){
-		
-		this.val = value;
-		
-		x += value;
+	public void update(){
+	
+		x += 0;
 		checkCollisions();
-		checkOffScreen();
+		//checkOffScreen();
 	}
 	
 	public void setXY(int x, int y){
@@ -32,33 +29,33 @@ public class Unit extends Entity{
 	
 	public void draw(Graphics2D g2d){
 	
-		g2d.drawImage(getUnitImg(), x, y, null);
+		g2d.drawImage(getTowerImg(), x, y, null);
 		//g2d.draw(getBounds());
 	
 	}
 
-	public Image getUnitImg(){
+	public Image getTowerImg(){
 	
-		ImageIcon ic = new ImageIcon("unit.png");
+		ImageIcon ic = new ImageIcon("tower.png");
 		return ic.getImage();
 	
 	}
 	
 	public void checkCollisions(){
 	
-		for(int i=0; i<GameFrame.getTowerList().size(); i++){
+		for(int i=0; i<GameFrame.getUnitList().size(); i++){
 		
-			Tower t = GameFrame.getTowerList().get(i);
+			Unit u = GameFrame.getUnitList().get(i);
 		
-			if(getBounds().intersects(t.getBounds())){
+			if(getBounds().intersects(u.getBounds())){
 
 				//GameFrame.removeFireBall(f);
 				//life = life - 1;
-				this.val = 0;
+				u.update(0);
 				
 				if(life == 0){
 				
-					GameFrame.removeUnit(this);
+					GameFrame.removeTower(this);
 					
 				}
 			}
@@ -72,14 +69,14 @@ public class Unit extends Entity{
 		if(x >= 700){
 		
 			x = startX;
-			//GameFrame.removeUnit(this);
+		
 		}
 	
 	}
 	
 	public Rectangle getBounds(){
 	
-		return new Rectangle(x, y, getUnitImg().getWidth(null), getUnitImg().getHeight(null));
+		return new Rectangle(x, y, getTowerImg().getWidth(null), getTowerImg().getHeight(null));
 	
 	}
 	

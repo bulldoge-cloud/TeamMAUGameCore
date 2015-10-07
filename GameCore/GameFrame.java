@@ -13,10 +13,13 @@ import javax.swing.*;
 public class GameFrame extends JPanel implements MouseListener, MouseMotionListener{
 	
 	static ArrayList<Unit> units = new ArrayList<Unit>();
+	static ArrayList<Tower> towers = new ArrayList<Tower>();
 	public int mouseX=0, mouseY=0;
 	Graphics g;
 	Graphics2D g2d = (Graphics2D) g;
 	int i=0, j=0, flag=0;
+	
+	int towerCount = 9;
 	
 	public GameFrame(){
 	
@@ -26,9 +29,15 @@ public class GameFrame extends JPanel implements MouseListener, MouseMotionListe
 			Unit unit = new Unit(0,0);
 			units.add(unit);
 		}
+		
+		for(int t=0; t<10; t++){
+			Tower tower = new Tower(0,0);
+			towers.add(tower);
+		}
+		
 		this.addMouseListener(this);
 		this.addMouseMotionListener(this);
-		
+		startgame();
 	}
 	
 	public void paint(Graphics g){
@@ -42,14 +51,34 @@ public class GameFrame extends JPanel implements MouseListener, MouseMotionListe
 		if(flag==1){
 			for(i=0; i< units.size(); i++){
 				units.get(i).draw(g2d);
-				units.get(i).update();
+				units.get(i).update(1);
 				repaint();
 			}
+			
+		}
+		
+		for(int k=0; k<towers.size(); k++){
+				towers.get(k).draw(g2d);
+				towers.get(k).update();
+				repaint();
 		}
 	
 	}
-	
 
+	public void actionPerformed(ActionEvent e){
+	
+		//player.update();
+		
+		for(int i=0; i<units.size(); i++){
+		
+			Unit tempUnit = units.get(i);
+			tempUnit.update();
+		
+		}
+		
+		repaint();
+		
+	}
 	
 	@Override
 	public void mouseClicked(MouseEvent event){
@@ -127,5 +156,30 @@ public class GameFrame extends JPanel implements MouseListener, MouseMotionListe
 	
 	}
 	
+	public static ArrayList<Tower> getTowerList(){
+	
+		return towers;
+	
+	}
+	
+	public static void addTower(Tower t){
+	
+		towers.add(t);
+	
+	}
+
+	public static void removeTower(Tower t){
+	
+		towers.remove(t);
+	
+	}
+	
+	
+	public void startgame(){
+		int start=100, inc=100;
+		for(int i=0; i< 3; i++){
+			addTower(new Tower(500, (start=start+inc)));
+		}
+	}
 	
 }
