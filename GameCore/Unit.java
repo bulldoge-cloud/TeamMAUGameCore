@@ -36,7 +36,7 @@ public class Unit extends Entity{
 
 	public Image getUnitImg(){
 	
-		ImageIcon ic = new ImageIcon("enemy.png");
+		ImageIcon ic = new ImageIcon("unit.png");
 		return ic.getImage();
 	
 	}
