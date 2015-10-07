@@ -36,6 +36,9 @@ public class GameFrame extends JPanel implements MouseListener, MouseMotionListe
 		super.paint(g);
 		Graphics2D g2d = (Graphics2D) g;
 		
+		ImageIcon ic = new ImageIcon("bg.png");
+		g2d.drawImage(ic.getImage(), 0, 0, null);
+		
 		for(int i=0; i<units.size(); i++){
 			units.get(i).draw(g2d);
 			units.get(i).update();
