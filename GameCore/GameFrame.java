@@ -16,7 +16,7 @@ public class GameFrame extends JPanel implements MouseListener, MouseMotionListe
 	public int mouseX=0, mouseY=0;
 	Graphics g;
 	Graphics2D g2d = (Graphics2D) g;
-	int j=0;
+	int i=0, j=0, flag=0;
 	
 	public GameFrame(){
 	
@@ -30,7 +30,7 @@ public class GameFrame extends JPanel implements MouseListener, MouseMotionListe
 		this.addMouseMotionListener(this);
 		
 	}
-
+	
 	public void paint(Graphics g){
 	
 		super.paint(g);
@@ -39,26 +39,49 @@ public class GameFrame extends JPanel implements MouseListener, MouseMotionListe
 		ImageIcon ic = new ImageIcon("bg.png");
 		g2d.drawImage(ic.getImage(), 0, 0, null);
 		
-		for(int i=0; i<units.size(); i++){
-			units.get(i).draw(g2d);
-			units.get(i).update();
-			repaint();	
+		if(flag==1){
+			for(i=0; i< units.size(); i++){
+				units.get(i).draw(g2d);
+				units.get(i).update();
+				repaint();
+			}
 		}
-		
+	
 	}
+	
+
 	
 	@Override
 	public void mouseClicked(MouseEvent event){
 		mouseX = event.getX();
 		mouseY = event.getY();
 		
+		if(flag == 0){
+			flag = 1;
+			units.get(i).setXY(mouseX, mouseY);
+		}
+		
 		if(j != units.size()){
+			
 			Unit unit = units.get(j);
-			units.get(j).setXY(mouseX, mouseY);
+			
+			if(mouseY >= 0 && mouseY < 300){
+				
+				unit.setXY(mouseX, 250);
+				
+			}else if(mouseY >= 300 && mouseY <= 400){
+				
+				unit.setXY(mouseX, 350);
+				
+			}else if(mouseY > 400 && mouseY < 700){
+				
+				unit.setXY(mouseX, 450);
+				
+			}
+		
 			repaint();
 			j++;
 		}
-		
 	}
 	
 	@Override

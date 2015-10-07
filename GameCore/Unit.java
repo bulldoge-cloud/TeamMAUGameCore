@@ -49,7 +49,7 @@ public class Unit extends Entity{
 	
 	public void checkOffScreen(){
 	
-		if(x >= 600){
+		if(x >= 700){
 		
 			x = startX;
 		
