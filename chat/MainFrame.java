@@ -8,14 +8,12 @@ import java.net.Socket;
 import javax.swing.*;
 import java.awt.*;
 
-public class MainFrame extends JFrame{
-
-	BufferedReader in;
+public class MainFrame extends JFrame {
+    BufferedReader in;
     PrintWriter out;
-
+InfantryFrame infanFrame;
 	//JTextField textField = new JTextField(40);
     //JTextArea messageArea = new JTextArea(8, 40);
-	
 	JFrame frame = new JFrame("Tower Wars");
 	JPanel cards = new JPanel(new CardLayout());
 	
@@ -66,7 +64,10 @@ public class MainFrame extends JFrame{
 	CardLayout cardLayout = (CardLayout) cards.getLayout();
 	String address="", username="";
 	
-	public MainFrame(){
+    /**
+     *
+     */
+    public MainFrame(){
 		
 		start_panel.setLayout(null);
 		center_panel.setLayout(null);
@@ -438,8 +439,12 @@ public class MainFrame extends JFrame{
 		start_button.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent ae){
-				CardLayout cl = (CardLayout) cards.getLayout();
-				cl.show(cards, "game");
+				//CardLayout cl = (CardLayout) cards.getLayout();
+				//cl.show(cards, "game");
+				infanFrame = new InfantryFrame();
+				infanFrame.setSize(700,700);
+				infanFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				infanFrame.setVisible(true);
 			}
 			
 		});
@@ -481,15 +486,38 @@ public class MainFrame extends JFrame{
             }
         }
     }
-	
-	public static void main(String args[])throws Exception{
-	
-		MainFrame game = new MainFrame();
-		game.frame.setSize(700,700);
-		game.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		game.frame.setVisible(true);
-	
-	}
-	
-}
 
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
+    private void initComponents() {
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
+
+        pack();
+    }// </editor-fold>                        
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) throws Exception {
+    MainFrame game = new MainFrame();
+	game.frame.setSize(700,700);
+	game.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	game.frame.setVisible(true);
+
+    }
+
+    // Variables declaration - do not modify                     
+    // End of variables declaration                   
+}
